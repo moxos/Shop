@@ -14,19 +14,19 @@ import javax.persistence.*;
         @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "products_sequence")
         private Long id;
         @NotNull
-        private String nazwa;
+        private String name;
         @NotNull
-        private String producent;
-        private double cena;
+        private String producer;
+        private double price;
 
-        @Override
-        public String toString() {
-            return "Products{" +
-                    "id=" + id +
-                    ", nazwa='" + nazwa + '\'' +
-                    ", producent='" + producent + '\'' +
-                    ", cena=" + cena +
-                    '}';
+        public Products(Long id, String name, String producer, double price) {
+            this.id = id;
+            this.name = name;
+            this.producer = producer;
+            this.price = price;
+        }
+
+        public Products() {
         }
 
         public Long getId() {
@@ -37,38 +37,38 @@ import javax.persistence.*;
             this.id = id;
         }
 
-        public String getNazwa() {
-            return nazwa;
+        public String getName() {
+            return name;
         }
 
-        public void setNazwa(String nazwa) {
-            this.nazwa = nazwa;
+        public void setName(String name) {
+            this.name = name;
         }
 
-        public String getProducent() {
-            return producent;
+        public String getProducer() {
+            return producer;
         }
 
-        public void setProducent(String producent) {
-            this.producent = producent;
+        public void setProducer(String producer) {
+            this.producer = producer;
         }
 
-        public double getCena() {
-            return cena;
+        public double getPrice() {
+            return price;
         }
 
-        public void setCena(double cena) {
-            this.cena = cena;
+        public void setPrice(double price) {
+            this.price = price;
         }
 
-        public Products(String nazwa, String producent, double cena, Long id) {
-            this.nazwa = nazwa;
-            this.producent = producent;
-            this.cena = cena;
-            this.id = id;
-        }
-
-        public Products() {
+        @Override
+        public String toString() {
+            return "Products{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    ", producer='" + producer + '\'' +
+                    ", price=" + price +
+                    '}';
         }
     }
 

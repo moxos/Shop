@@ -25,40 +25,34 @@ public class ProductsController {
     }
 
 
-   @GetMapping(path ="/all")
-   public void showProducts(Long Id){
 
-
-
-
-   }
    @GetMapping(path = "/to/{aha}")
     public Products byCena(@PathVariable("aha")Double cena){
 
-        return productsRepository.findProductsByCena(cena)
+        return productsRepository.findProductsByPrice(cena)
                 .orElseThrow(()->new UserNotFoundExceotion("Product by cena"+ cena+" was not fiund"));
 
     }
     @GetMapping(value="/name/{p}")
     public Optional<Products> byNamee(@PathVariable("p") String nazwa){
         Optional<Products> a;
-        a = productsRepository.findProductsByNazwa(nazwa);
+        a = productsRepository.findProductsByName(nazwa);
         return a;
 
 
     }
     @GetMapping(path="/producent/{p}")
     public List<Products>showProducent(@PathVariable("p")String producent){
-        List<Products> producents = productsRepository.findProductsByProducent(producent);
+        List<Products> producer = productsRepository.findProductsByProducer(producent);
 
-        return  producents;
+        return  producer;
     }
 
-    @DeleteMapping  ("/delete/{id}")
-    public void deleteProduct(@PathVariable("id") long id){
-        productsRepository.deleteById(id);
-
-
-    }
+//    @DeleteMapping  ("/delete/{id}")
+//    public void deleteProduct(@PathVariable("id") long id){
+//        productsRepository.deleteById(id);
+//
+//
+//    }
 
 }
