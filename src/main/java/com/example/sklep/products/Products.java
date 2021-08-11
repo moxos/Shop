@@ -1,21 +1,23 @@
 package com.example.sklep.products;
 
-import com.sun.istack.NotNull;
+
 
 
 import javax.persistence.*;
 
+import java.util.Objects;
 
-    @Entity
-    @Table
+
+@Entity
+@Table(name="products")
     public class Products {
         @Id
-        @SequenceGenerator(name = "products_sequence", sequenceName = "products_sequence",  allocationSize = 1)
-        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "products_sequence")
+
+        @GeneratedValue(strategy = GenerationType.SEQUENCE)
         private Long id;
-        @NotNull
+
         private String name;
-        @NotNull
+
         private String producer;
         private double price;
 
@@ -70,6 +72,19 @@ import javax.persistence.*;
                     ", price=" + price +
                     '}';
         }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Products products = (Products) o;
+        return Objects.equals(id, products.id);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+}
 
 
