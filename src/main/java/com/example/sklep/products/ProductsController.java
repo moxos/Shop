@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
-
+import javax.swing.*;
+import java.awt.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +25,12 @@ public class ProductsController {
         this.productsRepository = productsRepository;
     }
 
+@GetMapping(value="/hoho")
+    public void showoOF(){
 
+
+
+}
 
 
 
